@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <TItle>podschool-oficial</TItle>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/all.min.css.css">
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <div class="logo">
+      <img src="imagens/POD_schoolvv-removebg-preview.png" alt="">
+    </div> 
+    <nav>
+      <ul>
+        <li><a href="#">Início</a></li>
+        <li><a href="#sobre-nos">SOBRE NÓS</a></li>
+        <li><a href="#actividades">Actividades</a></li>
+        <li><a href="#noticias">Notícias</a></li> 
+        <li><a href="#servicos">SERVIÇOS</a></li>
+        <li><a href="#siga-nos">Siga-nos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Seção Hero (Imagem de destaque) -->
+  <section class="hero">
+    <video autoplay muted loop id="heroVideo">
+    <source src="videos/podvid2.mp4" type="video/mp4">
+    Seu navegador não suporta vídeos em HTML5.
+  </video>
+    <div class="hero-content">
+      <h1>Bem-vindo ao Podschool</h1>
+      <p>O maior Projeto educacional digital de Angola</p>
+      <a href="#" class="cta-btn">ENTRAR</a>
+    </div>
+  </section>
+
+  <!-- Modal de Login / Criar Conta -->
+<div id="authModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 id="modalTitle">Entrar</h2>
+    
+    <form id="loginForm">
+      <label for="senha">Palavra-passe:</label>
+      <input type="password" id="senha" required>
+      <button type="submit">Entrar</button>
+    </form>
+    
+    <p id="toggleText">Não tem conta? <a href="#" id="toggleLink">Criar conta</a></p>
+  </div>
+</div>
+
+
+ <!-- Modal Login -->
+  <div id="authModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); justify-content:center; align-items:center;">
+    <div class="modal-content" style="background:#fff; padding:20px; border-radius:8px; max-width:400px; width:90%; position:relative;">
+      <span class="close" style="position:absolute; right:15px; top:10px; font-size:24px; cursor:pointer;">&times;</span>
+      <h2 id="modalTitle">Entrar</h2>
+      
+      <form id="loginForm">
+        <label for="senha">Palavra-passe:</label><br />
+        <input type="password" id="senha" required style="width:100%; padding:8px; margin:10px 0;" />
+        <button type="submit" style="padding:10px 20px;">Entrar</button>
+      </form>
+      
+      <p id="toggleText">Não tem conta? <a href="#" id="toggleLink">Criar conta</a></p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const modal = document.getElementById("authModal");
+      const abrirBtn = document.querySelector(".cta-btn");
+      const closeBtn = modal.querySelector(".close");
+      const toggleLink = document.getElementById("toggleLink");
+      const modalTitle = document.getElementById("modalTitle");
+      const loginForm = document.getElementById("loginForm");
+      const senhaInput = document.getElementById("senha");
+      let modoCriar = false;
+
+      const senhaCorreta = "1234"; // senha fixa para teste
+
+      abrirBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        modoCriar = false;
+        atualizaModal();
+        modal.style.display = "flex";
+      });
+
+      closeBtn.addEventListener("click", () => modal.style.display = "none");
+      window.addEventListener("click", e => {
+        if (e.target === modal) modal.style.display = "none";
+      });
+
+      toggleLink.addEventListener("click", function(e) {
+        e.preventDefault();
+        modoCriar = !modoCriar;
+        atualizaModal();
+      });
+
+      function atualizaModal() {
+        if (modoCriar) {
+          modalTitle.textContent = "Criar Conta";
+          loginForm.querySelector("button").textContent = "Registrar";
+          toggleLink.textContent = "Entrar";
+          toggleLink.parentElement.firstChild.textContent = "Já tem conta? ";
+        } else {
+          modalTitle.textContent = "Entrar";
+          loginForm.querySelector("button").textContent = "Entrar";
+          toggleLink.textContent = "Criar conta";
+          toggleLink.parentElement.firstChild.textContent = "Não tem conta? ";
+        }
+        senhaInput.value = "";
+      }
+
+      loginForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const senha = senhaInput.value.trim();
+
+        if (modoCriar) {
+          alert("Conta criada com sucesso! (Simulado)");
+          modal.style.display = "none";
+        } else {
+          if (senha === senhaCorreta) {
+            alert("Login realizado com sucesso!");
+            modal.style.display = "none";
+            // Abre a página interna em nova aba
+            window.open("pagina_interna.html", "_blank");
+          } else {
+            alert("Senha incorreta, tente novamente.");
+          }
+        }
+      });
+    });
+
+</script>
+
+  <!-- Seção de Notícias -->
+  <section class="news">
+    <div class="news-container" >
+      <article>
+      </a><h2>Últimas Notícias</h2>
+        <p>Fique por dentro das novidades do grupo.</p>
+      </article>
+      <article>
+        <h2>Próximo evento</h2>
+        <p>Confira o próximo evento do grupo.</p>
+      </article>
+    </div>
+  </section>
+  <!-- Seção Sobre Nós -->
+<section class="about" id="sobre-nos">
+  <h2 style="color: blue;">Sobre Nós</h2>
+  <div class="team-container">
+    <div class="team-member">
+      <img src="imagens/adelson_simao_ceo.jpg" alt="Foto do Membro 1">
+      <h3>Adelson simão</h3>
+      <p>CEO.</p>
+    </div>
+    <div class="team-member">
+      <img src="imagens/soleny_walissa_secretgeral.jpg" alt="Foto do Membro 2">
+      <h3>Soleny Walissa</h3>
+      <p>Secretaria geral.</p>
+    </div>
+    <div class="team-member">
+      <img src="imagens/danilo_luimbe_liderprotocolo.jpg" alt="Foto do Membro 3">
+      <h3>Danilo Luimbe</h3>
+      <p>Lider do protocolo.</p>
+    </div> 
+    <div class="team-member">
+<img src="imagens/sandra_tiago_direct_marketing.jpg" alt="foto do membro 4">
+<h3>Sandra Tiago</h3>
+<p>directora de marketing</p>
+    </div>
+    <div class="team-member">
+<img src="imagens/aires_morgado_apresentador.jpg" alt=" foto membro 5">
+<h3>Aires Morgado</h3>
+<p>Apresentador</p>
+    </div>
+    <div class="team-member">
+<img src="imagens/camilafelipe_reporter.jpg" alt="foto do membro 6">
+<h3>Camila Felipe</h3>
+<p>Repórter</p>
+    </div>
+    <div class="team-member">
+<img src="imagens/djomiwuri_designer.jpg" alt=" foto membro 7">
+<h3>Djomiwuri</h3>
+<p>Designer gráfico</p>
+    </div>
+    <div class="team-member">
+<img src="imagens/andreia_felipe_recriacao.jpg" alt="foto membro 8">
+<h3>Andreia Felipe</h3>
+<p>Recriação</p>
+    </div>
+  </div>
+</section>
+
+<!-- seção actividades -->
+<section id="actividades">
+  <h2 style="color: blue;">Actividades</h2>
+  <p class="descricao">Veja algumas das principais actividades realizadas pelo Podschool.</p>
+
+  <div class="atividade">
+    <img src="imagens/jogo0.jpg" alt="2 edição do jogo solidario">
+    <h3>2 edição do jogo solidario</h3>
+    <p><strong>Data:</strong> 15 de Março de 2024</p>
+    <p>Organizamos este evento no intuito de ajudar os mais necessitados divertindo-se.</p>
+    <a href="#evento1">Ver mais</a>
+  </div>
+
+  <div class="atividade">
+    <img src="imagens/workshop6.jpg" alt="Workshop sobre negocios">
+    <h3>workshop sobre como criar uma empresa em Angola</h3>
+    <p><strong>Data:</strong> 12 de Janeiro de 2024</p>
+    <p>Promovemos um workshop rico para os alunos entenderem como funciona a vida empresarial em Angola.</p>
+    <a href="#evento2">Ver mais</a>
+  </div>
+<div class="atividade">
+<img src="imagens/africa1.jpg" alt="dia de da Africa 2025">
+<h3> Dia da África edição 2025</h3>
+<p><strong>Data:</strong> 23 de maio de 2025</p>
+<p>celebramos o dia do nosso continente África , comemorado no dia 25 de maio, o evento foi realizado no dia 23.</p>
+<a href="#evento3"> ver mais</a>
+</div>
+</section>
+
+
+<!-- seção noticias -->
+<section class="noticias" id="noticias">
+  <h2 style="color: blue;"> Notícias</h2>
+  <p class="descricao">Fique por dentro das atualizações mais recentes da Podschool.</p>
+
+  <div class="noticia-container">
+    <div class="noticia">
+      <img src="imagens/workshop4.jpg" alt="Evento Cultural">
+      <h3>Evento Cultural reúne mais de 500 jovens</h3>
+      <p class="data">Publicado em 15 de Maio de 2025</p>
+      <p class="resumo">O evento realizado em Luanda contou com apresentações culturais e debates sobre educação digital.</p>
+      <a href="#evento1">Ler mais</a>
+    </div>
+
+    <div class="noticia">
+      <img src="imagens/workshop8.jpg" alt="Novo curso">
+      <h3>Novo curso de comunicação digital está disponível</h3>
+      <p class="data">Publicado em 10 de Maio de 2025</p>
+      <p class="resumo">A Podschool lançou um novo módulo focado em redes sociais, marketing e criação de conteúdo digital.</p>
+      <a href="#">Ler mais</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- seção servicos -->
+
+
+<section class="servicos" id="servicos">
+  <h2 style="color: blue;">Nossos Serviços</h2>
+  <p class="descricao">Conheça as soluções educativas e culturais que oferecemos à comunidade.</p>
+
+  <div class="servico-container">
+    <div class="servico">
+      <i class="fas fa-chalkboard-teacher"></i>
+      <h3>Formações</h3>
+      <p>Ministramos cursos e oficinas voltadas para a educação digital, comunicação e liderança juvenil.</p>
+    </div>
+
+    <div class="servico">
+      <i class="fas fa-microphone-alt"></i>
+      <h3>Eventos & Palestras</h3>
+      <p>Organizamos encontros educativos, culturais e motivacionais em várias comunidades.</p>
+    </div>
+
+    <div class="servico">
+      <i class="fas fa-video"></i>
+      <h3>Produção de Conteúdo</h3>
+      <p>Desenvolvemos vídeos, podcasts e materiais digitais para aprendizagem e divulgação de projetos.</p>
+    </div>
+
+    <div class="servico">
+      <i class="fas fa-users"></i>
+      <h3>Consultoria Educacional</h3>
+      <p>Ajudamos instituições e grupos juvenis a criarem projetos pedagógicos com impacto social.</p>
+    </div>
+  </div>
+</section>
+
+<!-- seção siga-nos -->
+
+<section class="siga-nos" id="siga-nos">
+  <h2>Siga-nos nas Redes Sociais</h2>
+  <p class="descricao">Junte-se a nós e acompanhe todas as novidades da Podschool!</p>
+
+  <div class="redes-sociais">
+    <a href="" target="_blank" class="facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/podschool1/" target="_blank" class="instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="" target="_blank" class="tiktok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="" target="_blank" class="youtube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+  </div>
+</section>
+
+
+
+
+
+
+
+<!-- Galeria detalhada do Evento 1 -->
+<section id="evento1" class="galeria-evento">
+  <h2>Galeria: 2 edição do jogo solidario</h2>
+  <div class="galeria">
+    <img src="imagens/jogo1.jpg" alt="Foto 1">
+    <img src="imagens/jogo2.jpg" alt="Foto 2">
+    <img src="imagens/jogo3.jpg" alt="Foto 3">
+  </div>
+  <a href="#actividades" class="fechar">Voltar às atividades</a>
+</section>
+
+<!-- Galeria detalhada do Evento 2 -->
+<section id="evento2" class="galeria-evento">
+  <h2>Galeria: Workshop sobre como criar uma empresa</h2>
+  <div class="galeria">
+    <img src="imagens/worshop1.jpg" alt="Foto 1">
+    <img src="imagens/workshop2.jpg" alt="Foto 2">
+    <img src="imagens/workshop3.jpg" alt="Foto 3">
+    <img src="imagens/workshop0.jpg" alt="foto 4">
+  </div>
+  <a href="#actividades" class="fechar">Voltar às atividades</a>
+</section>
+
+<section id="evento3" class="galeria-evento">
+<h2>Galeria: Dia da África edição 2025</h2>
+<div class="galeria">
+<img src="imagens/africa2.jpg" alt="foto 1">
+<img src="imagens/africa3.jpg" alt=" foto 2">
+<img src="imagens/africa4.jpg" alt=" foto 3">
+<img src="imagens/africa5.jpg" alt=" foto 4">
+</div>
+<a href="#actividades" class="fechar"> Voltar ás atividades</a>
+</section>
+
+  <!-- desenvolvedores do site -->
+<section class="grupo">
+  <h2 style="color: blue;">Desenvolvedores da página</h2>
+  <div class="integrante-container">
+    <div class="integrante-member">
+      <img src="imagens/mario.jpg" alt="Foto do Membro 1">
+      <h3>Mário da Silva</h3>
+      <p></p>
+    </div>
+    <div class="integrante-member">
+      <img src="imagens/aida.jpg" alt="Foto do Membro 2">
+      <h3>Aida Bernado</h3>
+      <p></p>
+    </div>
+    <div class="integrante-member">
+      <img src="imagens/alfa.jpg" alt="Foto do Membro 3">
+      <h3>Alfa de Oliveira</h3>
+      <p></p>
+    </div> 
+    <div class="integrante-member">
+<img src="imagens/simão.jpg" alt="foto do membro 4">
+<h3>Simão Mágico</h3>
+<p></p>
+    </div>
+    <div class="integrante-member">
+<img src="imagens/adilson.jpg" alt=" foto membro 5">
+<h3>Adilson magalhães</h3>
+<p></p>
+    </div>
+    <div class="integrante-member">
+<img src="imagens/alessandro.jpg" alt="foto do membro 6">
+<h3>Alessandro Baptista</h3>
+<p></p>
+    </div>
+    <div class="integrante-member">
+<img src="imagens/maria.jpg" alt=" foto membro 7">
+<h3>maria josé</h3>
+<p></p>
+    </div>
+    <div class="integrante-member">
+<img src="imagens/inacio.jpg" alt="foto membro 8">
+<h3>inacio gabriel</h3>
+<p></p>
+    </div>
+    <div class="integrante-member">
+<img src="imagens/augusto.jpg" alt="foto membro 9">
+<h3>augusto domingos</h3>
+<p></p>
+    </div>
+    <div class="integrante-member">
+<img src="imagens/" alt="foto membro 10">
+<h3>luis felicia  </h3>
+<p></p>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <!-- Rodapé -->
+  <footer>
+  <div class="footer-container">
+    <p>&copy; 2025 Podschool. Todos os direitos reservados.</p>
+    <div class="social">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.instagram.com/podschool1/" aria-label="Instagram" target="_blank">
+    <i class="fab fa-instagram"></i>
+</a>
+
+
+
+    </div>
+  </div>
+</footer>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/682f72d1c6552a191026b598/1irslh0tm';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>
+

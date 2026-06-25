@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Centro do Usuário - Podschool</title>
+  <link rel="stylesheet" href="style_interno.css">
+  <link rel="stylesheet" href="css/all.min.css.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="imagens/POD_schoolvv-removebg-preview.png" alt="Logo">
+      <h1>Bem-vindo ao Centro da Comunidade</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#perfil">Meu Perfil</a></li>
+        <li><a href="#entretenimento">Diversão</a></li>
+        <li><a href="#informacoes">Informações</a></li>
+        <li><a href="index.html">Sair</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="perfil">
+      <h2>Meu Perfil</h2>
+      <p>Aqui futuramente você poderá ver suas conquistas, eventos que participou, etc.</p>
+    </section>
+
+    <section id="entretenimento">
+      <h2>Zona de Diversão</h2>
+      <p>Vídeos, quizzes, jogos, desafios da semana, entre outros conteúdos vão aparecer aqui.</p>
+    </section>
+
+    <section id="informacoes">
+      <h2>Informações e Notícias Internas</h2>
+      <p>Confira as últimas novidades exclusivas da comunidade Podschool.</p>
+    </section>
+  </main>
+  <main>
+  <section id="jogos">
+    <h2>Jogos Educativos</h2>
+    <iframe src="https://www.friv.com/" width="100%" height="400px"></iframe>
+  </section>
+
+  <section id="videos">
+    <h2>Vídeos Educativos</h2>
+    <iframe width="560" height="315" src="videos/podvid2.mp4" frameborder="0" allowfullscreen></iframe>
+  </section>
+
+  <section id="chat">
+    <h2>Área de Chat</h2>
+    <div id="chat-box" style="border:1px solid #ccc; padding:10px; height:300px; overflow-y:scroll;">
+      <p><strong>Podschool:</strong> Bem-vindo! Fale com outros estudantes.</p>
+    </div>
+    <input type="text" id="msg" placeholder="Digite sua mensagem" style="width:80%;" />
+    <button onclick="enviarMsg()">Enviar</button>
+  </section>
+</main>
+
+<script>
+  function enviarMsg() {
+    const msg = document.getElementById("msg").value;
+    if (msg.trim() !== "") {
+      const chatBox = document.getElementById("chat-box");
+      const novoPar = document.createElement("p");
+      novoPar.innerHTML = "<strong>Você:</strong> " + msg;
+      chatBox.appendChild(novoPar);
+      document.getElementById("msg").value = "";
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+  <footer>
+    <p>&copy; 2025 Podschool - Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
